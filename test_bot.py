@@ -11,11 +11,11 @@ fraza = ['"Я не знаю что мне делать" Наталья Бонд�
 bot = telebot.TeleBot('1693428494:AAEZbN8QXsVjtS-FR82Ga7FQOEv5oVO5QQc');
 
 
-@bot.message_handler(content_types=['text', 'document', 'audio'])
-
-def get_text_messages(message):
-        if message.text.lower() == '/citata':
+@bot.message_handler(commands=['citata'])
+def start_message(message):
             mssg = random.choice(fraza)
             bot.send_message(message.chat.id, mssg)
+
+bot.polling(none_stop=True, interval=0)
 
 bot.polling(none_stop=True, interval=0)
